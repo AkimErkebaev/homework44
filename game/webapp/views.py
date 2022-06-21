@@ -36,7 +36,31 @@ def create_solution(request):
                 elif numbers_int[3] not in range(1, 10):
                     result = "vvedite chisla ot 1 do 9"
                 else:
-                    pass
+                    bull, cow = 0, 0
+                    s = list(secret_nums)
+                    g = list(numbers_int)
+
+                    i, j = 0, 0
+                    while i < len(secret_nums):
+                        if s[j] == g[j]:
+                            bull += 1
+                            s.pop(j)
+                            g.pop(j)
+                        else:
+                            j += 1
+                        i += 1
+
+                    count = Counter(s)
+
+                    for l in g:
+                        if l in count and count[l] > 0:
+                            cow += 1
+                            count[l] -= 1
+
+                    if bull == 4:
+                        result = "You got it right!"
+                    else:
+                        result = "You got {bull} bulls, {cow} cows".format(bull=bull, cow=cow)
             except ValueError:
                 result = "Vi vveli ne korrektnoe znachene"
             context = {
