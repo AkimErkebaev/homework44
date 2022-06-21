@@ -8,11 +8,12 @@
     <title>Document</title>
 </head>
 <body>
-    <p>Guess 4 numbers. Enter them separated with spaces:</p>
-    <form method="POST" action="/solution/">
-        {% csrf_token %}
-        <input type="text" name="numbers"/>
-        <input type="submit" value="Send"/>
-    </form>
+<p>Guess 4 numbers. Enter them separated with spaces:</p>
+<form method="POST" action="/solution/">
+    {% csrf_token %}
+    <input type="text" name="numbers"/>
+    <input type="submit" value="Send"/>
+</form>
+<p>{{ result }}</p>
 </body>
 </html>
